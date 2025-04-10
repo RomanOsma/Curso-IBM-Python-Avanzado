@@ -2,7 +2,7 @@
 
 # Lo ideal es declara e inicializar siempre las variables.
 # -----------------------------------------------------------
-
+# En Python no es necesario declarar el tipo de variable, ya que el intérprete lo infiere automáticamente.
 # Declaración de variable numérica entera:
 n_edad = 47
 
