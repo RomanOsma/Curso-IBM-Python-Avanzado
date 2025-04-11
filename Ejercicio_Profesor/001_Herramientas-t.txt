@@ -19,6 +19,9 @@ Editados -t
  281
  301
  355
+ 356
+ 357
+ 380
 
 
 Ejemplo de Prompt: para mejora de codigo
