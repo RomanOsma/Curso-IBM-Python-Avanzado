@@ -117,5 +117,6 @@ def menu():
 if __name__ == "__main__":
     menu()
 # Este código implementa un sistema de gestión de contactos en Python.
-# Permite agregar, mostrar, buscar y eliminar contactos de un archivo de texto.
-# Utiliza expresiones regulares para validar correos electrónicos.
+# Permite agregar, mostrar, buscar y eliminar contactos.
+# Los contactos se guardan en un archivo de texto y se cargan al iniciar el programa.
+# Se valida el formato del correo electrónico al agregar un contacto.
