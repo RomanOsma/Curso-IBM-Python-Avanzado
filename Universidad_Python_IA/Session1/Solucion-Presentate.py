@@ -1,4 +1,4 @@
 # Ejercicio de Presentacion con Python
-print('Nombre: Juan Perez')
-print('Edad: 28')
-print('Pais: Mexico')
+print('Nombre: Angel Roman')
+print('Edad: 40')
+print('Pais: España')
