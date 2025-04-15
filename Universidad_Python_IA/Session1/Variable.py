@@ -73,6 +73,7 @@ diccionario = {
 
 # Ejemplo de impresión de estructuras compuestas:
 print("\nLista de números:", lista_numeros)
+print("\nLista de cadenas:", lista_cadenas)
 print("Tupla:", tupla_ejemplo)
 print("Diccionario:", diccionario)
 
