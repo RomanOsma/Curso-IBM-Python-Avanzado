@@ -208,7 +208,7 @@ print("\n26. Cadena:", cadena_ej)
 # 27. Caracteres Especiales en Python
 # ==========================================================================
 # Para representar caracteres especiales se usan secuencias de escape.
-texto_escapes = "Línea 1\nLínea 2\tcon tabulación y una barra invertida: \\"
+texto_escapes = "Línea 1\nLínea 2\tcon tabulación y ' no hace falta  entre doble comillas, una barra invertida: \\ o \""
 print("\n27. Texto con caracteres especiales:")
 print(texto_escapes)
 
@@ -219,17 +219,28 @@ print(texto_escapes)
 saludo1 = "Hola"
 saludo2 = "Mundo"
 saludo_completo = saludo1 + " " + saludo2
-print("\n28. Saludo concatenado:", saludo_completo)
+print("\n28. Saludo' concatenado:", saludo_completo)
+saludo3 = "Adios"
+saludo4 = "Mundo"
+saludo_completo2 = "".join([saludo3, " ", saludo4])
+print("\n28. Saludo2' concatenado:", saludo_completo2)
+saludo5 = "Otro "
+saludo6 = "Mundo"
+saludo_completo3 = saludo5.join([" ", saludo6])
+print("\n28. Saludo3' concatenado:", saludo_completo3)
 
 # ==========================================================================
 # 29. Formato de Cadenas en Python
 # ==========================================================================
 # Se pueden formatear cadenas de varias maneras:
 # 1. Usando el método format()
-formateo1 = "El valor es: {}".format(123)
+numero2 = 123
+nombre2 = "numero"
+formateo1 = "El {} valor es: {}".format(nombre2, numero2)
 # 2. Usando f-strings (requiere Python 3.6+)
+valor2= "valor"
 valor_variable = 456
-formateo2 = f"El valor variable es: {valor_variable}"
+formateo2 = f"El {valor2} variable es: {valor_variable}"
 print("\n29. Formateo de cadenas:")
 print(formateo1)
 print(formateo2)
@@ -256,7 +267,10 @@ print("31. Cadena en minúsculas:", minusculas)
 # Se utiliza slicing para extraer una parte de la cadena.
 # Sintaxis: cadena[inicio:fin] (fin no se incluye)
 subcadena = cadena_ej[8:18]
+# Sintaxis: cadena[inicio:] (hasta el final de la cadena)
+subcadena2 = cadena_ej[8:]
 print("\n32. Subcadena extraída:", subcadena)
+print("\n32. Subcadena extraída:", subcadena2)
 
 # ==========================================================================
 # 33. Capturar información por Consola en Python
@@ -264,6 +278,8 @@ print("\n32. Subcadena extraída:", subcadena)
 # input() permite leer información introducida por el usuario.
 nombre_usuario = input("\n33. Ingresa tu nombre: ")
 print("33. ¡Bienvenido,", nombre_usuario + "!")
+print(f"33. ¡Bienvenido, {nombre_usuario} !")
+
 # Nota: Al usar input(), el valor capturado es de tipo cadena (str).
 
 # ==========================================================================
@@ -286,13 +302,15 @@ def presentate():
 
     No retorna valor, solo imprime la presentación.
     """
-    nombre = input("34. Ingresa tu nombre: ")
+    nombre3 = input("34. Ingresa tu nombre: ")
+    apellido2 = input("34. Ingresa tu apeliido: ")
+    email = f"{nombre.lower()}.{apellido.lower()}@miemppresa.com"
     # Convertir la edad a entero después de capturarla como cadena.
-    edad = int(input("34. Ingresa tu edad: "))
+    edad2 = int(input("34. Ingresa tu edad: "))
     ciudad = input("34. Ingresa tu ciudad: ")
 
     # Formateo de la presentación.
-    presentacion = f"¡Hola, mi nombre es {nombre}, tengo {edad} años y soy de {ciudad}."
+    presentacion = f"¡Hola, mi nombre es {nombre3} {apellido2}, mi email es {email} tengo {edad2} años y soy de {ciudad}."
     print("35. Presentación:\n", presentacion)
 
 # Llamada a la función de presentación (se puede comentar para pruebas automáticas)
@@ -318,20 +336,170 @@ def crear_receta():
     Se solicitan:
         - Nombre del plato (str)
         - Ingredientes (str): Se espera una cadena separada por comas.
-        - Instrucciones (str)
+        - Tiempo = (int) Se espera Tiempo de preparaciónen minutos "
+        - Dificultad = (str) ("Facil, Media, Alta")
+        - instrucciones = (str) Se espera Instrucciones de preparación:
 
     Retorna:
         dict: Información de la receta.
     """
-    nombre_plato = input("36. Nombre del plato: ")
-    ingredientes = input("36. Ingresa los ingredientes separados por comas: ")
-    instrucciones = input("36. Instrucciones de preparación: ")
+    nombre_plato = input("Nombre del plato: ")
+    ingredientes = input("Ingresa los ingredientes separados por comas: ")
+    tiempo = int(input("Tiempo de preparación: "))
+    dificultad = input("Dificultad de preparación: ")
+    instrucciones = input("Instrucciones de preparación: ")
+    print(f"¡nombre es {nombre_plato}")
+    print(f"¡ingredientes es {ingredientes}")
+    print(f"¡tiempo es {tiempo}")
+    print(f"¡dificultad es {dificultad}")
 
     # Separamos los ingredientes en una lista usando split() y eliminamos espacios sobrantes.
     lista_ingredientes = [ingrediente.strip() for ingrediente in ingredientes.split(',')]
 
+    print(lista_ingredientes)
+
     receta = {
         "nombre": nombre_plato,
         "ingredientes": lista_ingredientes,
+        "tiempo": tiempo,
+        "dificultad": dificultad,
         "instrucciones": instrucciones
     }
+    return receta
+
+
+def mostrar_receta(receta: dict):
+    """
+    Muestra la receta formateada.
+
+    Parámetros:
+        receta (dict): Diccionario que contiene 'nombre', 'ingredientes' e 'instrucciones'.
+    """
+    print("\n37. Receta de Cocina")
+    print("Plato:", receta.get("nombre"))
+    print("Ingredientes:")
+    for ing in receta.get("ingredientes", []):
+        print(" -", ing)
+    print("Instrucciones:", receta.get("instrucciones"))
+
+
+# Ejemplo de uso:
+receta_ej = crear_receta()
+mostrar_receta(receta_ej)
+
+# ==========================================================================
+# 38. Ejercicio Propuesto - Generador de ID Único
+# ==========================================================================
+# Se solicita generar un identificador único utilizando el módulo uuid.
+# El ejercicio consiste en implementar una función que retorne un ID único.
+
+# ==========================================================================
+# 39. Solución Ejercicio - Generador de ID Único
+# ==========================================================================
+import uuid  # Importa el módulo para generar IDs únicos
+
+
+def generar_id_unico() -> str:
+    """
+    Genera un identificador único basado en uuid4.
+
+    Retorna:
+        str: Cadena única generada.
+    """
+
+    id_unico = uuid.uuid4()  # uuid4 genera un UUID aleatorio.
+    return str(id_unico)
+
+
+# Ejemplo de uso:
+id_generado = generar_id_unico()
+print("\n39. ID Único generado:", id_generado)
+
+import random  # Módulo para generar números aleatorios
+
+
+def generar_id_unico(nombre: str, apellido: str, anio_nacimiento: int) -> str:
+    """
+    Genera un ID único a partir de los datos del usuario y un número aleatorio.
+
+    Parámetros:
+    - nombre (str): Nombre del usuario.
+    - apellido (str): Apellido del usuario.
+    - anio_nacimiento (int): Año de nacimiento del usuario.
+
+    Retorna:
+    - str: ID único generado con el formato especificado.
+    """
+
+    # Tomamos las primeras dos letras del nombre y las convertimos en mayúsculas
+    parte_nombre = nombre[:2].upper()
+
+    # Tomamos las primeras dos letras del apellido y las convertimos en mayúsculas
+    parte_apellido = apellido[:2].upper()
+
+    # Extraemos los dos últimos dígitos del año de nacimiento (ej. 1995 → '95')
+    parte_anio = str(anio_nacimiento)[-2:]
+
+    # Generamos un número aleatorio de 4 dígitos entre 1000 y 9999
+    valor_aleatorio = str(random.randint(1000, 9999))
+
+    # Concatenamos todas las partes para formar el ID único
+    id_unico = parte_nombre + parte_apellido + parte_anio + valor_aleatorio
+
+    return id_unico
+
+
+# =========================
+# Ejemplo de uso
+# =========================
+nombre = "Juan"
+apellido = "Perez"
+anio_nacimiento = 1995
+
+id_generado = generar_id_unico(nombre, apellido, anio_nacimiento)
+
+# Imprimimos el resultado como lo requiere el ejercicio
+print("Resultado ID Único:", id_generado)
+
+
+# ==========================================================================
+# 40. Ejercicio Propuesto - Generador de Nombres de Emails
+# ==========================================================================
+# Se pide que, dado un nombre completo, se genere una dirección de correo electrónico
+# en un formato predefinido. Por ejemplo, a partir de "Juan Pérez" se puede generar
+# "juan.perez@ejemplo.com".
+
+# ==========================================================================
+# 41. Solución Ejercicio - Generador de Nombres de Emails
+# ==========================================================================
+def generar_email(nombre_completo: str, dominio: str = "ejemplo.com") -> str:
+    """
+    Genera un email a partir de un nombre completo.
+
+    Parámetros:
+        nombre_completo (str): Nombre y apellido(s) del usuario.
+        dominio (str): Dominio del email. Valor por defecto "ejemplo.com".
+
+    Retorna:
+        str: Dirección de email en formato 'nombre.apellido@dominio'
+    """
+    # Convertir a minúsculas y eliminar espacios extra.
+    nombre_procesado = nombre_completo.strip().lower()
+    # Reemplazar espacios internos por puntos.
+    nombre_email = nombre_procesado.replace(" ", ".")
+    email = f"{nombre_email}@{dominio}"
+    return email
+
+
+# Ejemplo de uso:
+nombre_usuario_email = input("\n40. Ingresa tu nombre completo para generar tu email: ")
+email_generado = generar_email(nombre_usuario_email)
+print("41. Email generado:", email_generado)
+
+# ==========================================================================
+# Fin de la Guía Completa
+# ==========================================================================
+# Esta guía ha sido diseñada para cubrir de forma práctica y detallada
+# los temas abordados en clase, incluyendo ejemplos y ejercicios resueltos.
+# Se recomienda revisar cada sección y realizar los ejercicios de manera
+# interactiva para reforzar el aprendizaje.
