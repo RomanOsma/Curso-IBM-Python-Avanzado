@@ -199,6 +199,8 @@ def mayor_de_dos(num1: float, num2: float) -> float:
 n1 = float(input("Ingrese el primer número: "))
 n2 = float(input("Ingrese el segundo número: "))
 print("68. El mayor de los dos es:", mayor_de_dos(n1, n2))
+mayor=mayor_de_dos(n1, n2)
+print(f"68. El mayor de los dos es: {mayor}")
 
 # =============================================================================
 # 69. Operador Ternario en Python
@@ -243,7 +245,7 @@ def obtener_estacion(mes: int) -> str:
 
 mes_usuario = int(input("Ingrese el número del mes (1-12): "))
 print("71. La estación es:", obtener_estacion(mes_usuario))
-
+print(f"71. La estación es: {obtener_estacion(mes_usuario)}")
 
 # =============================================================================
 # 72 y 73. Ejercicio Propuesto - Mayor de Edad en Python
@@ -252,6 +254,7 @@ print("71. La estación es:", obtener_estacion(mes_usuario))
 # Nivel sencillo.
 # -----------------------------------------------------------------------------
 # Solución:
+MAYOR_EDAD = 18
 def es_mayor_de_edad(edad: int) -> bool:
     """
     Verifica si la persona es mayor de edad (18 o más).
@@ -262,7 +265,7 @@ def es_mayor_de_edad(edad: int) -> bool:
     Retorna:
         bool: True si es mayor de edad, False en caso contrario.
     """
-    return True if edad >= 18 else False
+    return True if edad >= MAYOR_EDAD else False
 
 
 edad_persona = int(input("Ingrese su edad: "))
@@ -273,3 +276,134 @@ else:
 
 # =============================================================================
 # 74 y 75. Ejercicio Propuesto - Sistema de Calificaciones en Python
+# =============================================================================
+# Propuesta: Dado un puntaje, asigna una calificación según una escala.
+# Por ejemplo:
+#    90 - 100: "A"
+#    80 - 89 : "B"
+#    70 - 79 : "C"
+#    60 - 69 : "D"
+#    Menos de 60: "F"
+# Puedes agregar niveles intermedios para más dificultad.
+# -----------------------------------------------------------------------------
+# Solución:
+def asignar_calificacion(puntaje: float) -> str:
+    """
+    Asigna una calificación basada en el puntaje recibido.
+
+    Parámetro:
+        puntaje (float): Valor numérico del puntaje (0-10).
+
+    Retorna:
+        str: Calificación según la escala.
+    """
+    if puntaje >= 9:
+        return "A"
+    elif puntaje >= 8:
+        return "B"
+    elif puntaje >= 7:
+        return "C"
+    elif puntaje >= 6:
+        return "D"
+    else:
+        return "F"
+
+puntaje_usuario = float(input("Ingrese su puntaje (0-10): "))
+print("75. Su calificación es:", asignar_calificacion(puntaje_usuario))
+
+# =============================================================================
+# 76 y 77. Ejercicio Propuesto - Sistema de Envíos en Python
+# =============================================================================
+# Propuesta: Calcular el costo de envío según el peso del paquete.
+# Supón que:
+#    - Hasta 1 kg: $5
+#    - Más de 1 y hasta 5 kg: $10
+#    - Más de 5 kg: $20
+# Puedes agregar condiciones adicionales o cargos según la distancia.
+# -----------------------------------------------------------------------------
+# Solución:
+def costo_envio(peso: float) -> float:
+    """
+    Calcula el costo de envío basado en el peso del paquete.
+
+    Parámetro:
+        peso (float): Peso del paquete en kilogramos.
+
+    Retorna:
+        float: Costo del envío.
+    """
+    if peso <= 1:
+        return 5.0
+    elif peso <= 5:
+        return 10.0
+    else:
+        return 20.0
+
+peso_paquete = float(input("Ingrese el peso del paquete (kg): "))
+print("77. El costo de envío es:", costo_envio(peso_paquete))
+
+print('*** Sistema de Envíos ***')
+
+# =============================================================================
+
+# Definimos las tarifas de envío por kilogramo
+TARIFA_NACIONAL = 10
+TARIFA_INTERNACIONAL = 20
+
+# Solicitar los valores de destino y peso
+destino = input('Ingresa el destino del paquete (nacional o internacional): ')
+peso = float(input('Ingresa el peso del paquete (en kg): '))
+
+costo_envio = None # Definimos la variable de costo de envio
+
+# Calculo del costo de envío
+if destino.lower() == 'nacional':
+    costo_envio = peso * TARIFA_NACIONAL
+elif destino.lower() == 'internacional':
+    costo_envio = peso * TARIFA_INTERNACIONAL
+else:
+    print('Destino no válido. Ingresa el valor de nacional o internacional')
+
+# Mostrar el costo de envío sólo si es un valor válido
+if costo_envio is not None:
+    print(f'El costo de envío del paquete es: ${costo_envio:.2f}')
+
+# =============================================================================
+# 78 y 79. Ejercicio Propuesto - Sistema de Autenticación en Python
+# =============================================================================
+# Propuesta: Simular un sistema simple de autenticación. Se le solicita al usuario
+# ingresar un nombre de usuario y una contraseña, y se verifica si corresponden con
+# los valores predefinidos.
+# -----------------------------------------------------------------------------
+# Solución:
+def autenticar(usuario: str, password: str) -> bool:
+    """
+    Valida credenciales comparándolas con valores predefinidos.
+
+    Parámetros:
+        usuario (str): Nombre de usuario ingresado.
+        password (str): Contraseña ingresada.
+
+    Retorna:
+        bool: True si las credenciales son correctas, False en caso contrario.
+    """
+    # Valores predefinidos (en un caso real se consultarían de una base de datos)
+    usuario_correcto = "admin"
+    password_correcta = "clave123"
+    return usuario == usuario_correcto and password == password_correcta
+
+usuario_input = input("Ingrese el usuario: ")
+password_input = input("Ingrese la contraseña: ")
+
+if autenticar(usuario_input, password_input):
+    print("79. Autenticación exitosa")
+else:
+    print("79. Error en la autenticación")
+
+# =============================================================================
+# Fin de la Guía
+# =============================================================================
+# Esta guía integra explicaciones teóricas, ejemplos prácticos y ejercicios
+# resueltos. Cada sección contiene comentarios que explican el uso de los parámetros,
+# atributos, funciones o métodos empleados. Utilízala para repasar y profundizar
+# en el manejo de sentencias de decisión y la lógica condicional en Python.
