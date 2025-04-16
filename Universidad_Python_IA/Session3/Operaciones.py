@@ -102,6 +102,17 @@ if carnet or estudiante:
     print("Préstamo autorizado")
 else:
     print("Acceso denegado")
+# ----------------------------------------------------
+print('*** Sistema Prestamo de Libros ***')
+
+DISTANCIA_PERMITIDA_KM = 5
+credencial = input('Cuentas con credencial de estudiante (Si/No)? ')
+distancia_biblioteca_km = int(input('A cuantos km vives de la biblioteca? '))
+
+es_elegible_prestamo = (credencial.lower() == 'si'
+                        or distancia_biblioteca_km <= DISTANCIA_PERMITIDA_KM)
+
+print(f'Eres elegible para prestamo de libros? {es_elegible_prestamo}')
 
 # ----------------------------------------------------
 # 50. Operador Lógico not
@@ -128,28 +139,76 @@ print("Producto:", producto)
 print("Precio final:", precio_final)
 
 # ----------------------------------------------------
+
+# Ticket de Venta de una compra en un supermercado
+print('*** Generacion Ticket de Venta ***')
+precio_leche = float(input('Precio leche: '))
+precio_pan = float(input('Precio pan: '))
+precio_lechuga = float(input('Precio lechuga: '))
+precio_platanos = float(input('Precio platanos: '))
+descuento_porcentaje = int(input('Aplicar algún descuento(%)? '))
+
+# Calcular el subtotal (sin impuestos)
+subtotal = precio_leche + precio_pan + precio_lechuga + precio_platanos
+
+# Aplicar el descuento
+descuento = subtotal * (descuento_porcentaje/100)
+
+# Subtotal con descuento
+subtotal_con_descuento = subtotal - descuento
+
+# Calcular el impuesto (21%)
+impuesto = subtotal_con_descuento * .21
+
+# Calculo total de la compra (incluyendo impuestos)
+costo_total_compra = subtotal_con_descuento + impuesto
+
+# Generar el ticket de venta
+# .2f es el formato de saliada
+print(f'''
+--- Ticket de Venta ---
+Subtotal: ${subtotal:.2f} 
+Descuento: ${descuento} ({descuento_porcentaje}%)
+Subtotal con descuento: ${subtotal_con_descuento:.2f}
+Impuesto (16%): ${impuesto:.2f}
+Costo total de la compra: ${costo_total_compra:.2f}
+''')
+
+# ----------------------------------------------------
 # 53-54. Sistema de Autenticación
 # ----------------------------------------------------
 usuario_esperado = "admin"
 clave_esperada = "1234"
 
-usuario_ingresado = "admin"
-clave_ingresada = "1234"
+usuario_ingresado = input('Cual es tu usuario? ')
+password_ingresado = input('Cual es tu password? ')
+acceso = (usuario_ingresado == usuario_ingresado and password_ingresado == clave_esperada)
 
-if usuario_ingresado == usuario_esperado and clave_ingresada == clave_esperada:
+if acceso:
     print("Acceso concedido")
 else:
     print("Acceso denegado")
 
 # ----------------------------------------------------
 # 55. Precedencia de Operadores
+# 1. Paréntesis (): Los paréntesis tienen la mayor precedencia
+# 2. Exponente **: Este operador calcula la potencia de un número.
+# 3. Unario +, -: Estos operadores realizan operaciones unarias de positivo y negativo
+# 4. Multiplicación *, División /, División entera //, Módulo %
+# 5. Suma +, Resta -: Estos operadores realizan operaciones aritméticas.
+# 6. Comparaciones (==, !=, >, <, >=, <=)
+# 7. Operadores lógicos not, and, or
+# 8. Asignación (=, +=, -=, *=, /=, entre otros)
 # ----------------------------------------------------
-# Paréntesis > Potencia > Multiplicación/División > Suma/Resta
+# Resumen -> Paréntesis > Potencia > Multiplicación/División > Suma/Resta
 resultado = 3 + 2 * 2  # Resultado = 7
 resultado2 = (3 + 2) * 2  # Resultado = 10
-print("Resultado 1:", resultado)
-print("Resultado 2:", resultado2)
-
+resultado3 = 12 / 3 + 2 * 3 - 1
+resultado4 = 12 / (3 + 2) * 3 - 1
+print(f'Resultado: {resultado}')
+print(f'Resultado: {resultado2}')
+print("Resultado 2:", resultado3)
+print("Resultado 2:", resultado4)
 # ----------------------------------------------------
 # 56-57. Ejercicio - Valor dentro de Rango
 # ----------------------------------------------------
@@ -157,6 +216,7 @@ numero = 15
 rango_min = 10
 rango_max = 20
 
+# if rango_min <= numero <= rango_max:
 if numero >= rango_min and numero <= rango_max:
     print("Número dentro de rango")
 else:
@@ -170,4 +230,6 @@ base = 5
 altura = 10
 
 area = base * altura
+perimetro = 2 *(base + altura)
 print("Área del rectángulo:", area)
+print("Perimetro del rectángulo:", perimetro)
