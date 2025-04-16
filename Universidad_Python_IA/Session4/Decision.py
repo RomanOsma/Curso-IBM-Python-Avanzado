@@ -41,6 +41,17 @@ if numero > 5:
     print("El número es mayor que 5")
 # En este ejemplo, si la condición "numero > 5" es verdadera, se ejecuta el bloque indentado.
 
+# Ejemplo analizando True/False:
+
+print('*** Sentencias Decisión ***')
+
+dia_con_lluvia = False
+
+if dia_con_lluvia:
+    print('Llevar paraguas')
+else:
+    print('Dejar paraguas en casa')
+
 # =============================================================================
 # 61. Sentencia if else en Python
 # =============================================================================
@@ -91,6 +102,8 @@ numero_input = float(input("Ingrese un número: "))  # Convertimos la entrada a 
 
 if numero_input > 0:
     print("El número es positivo")
+elif numero_input == 0:
+    print("El numero es cero")
 else:
     print("El número no es positivo")
 
