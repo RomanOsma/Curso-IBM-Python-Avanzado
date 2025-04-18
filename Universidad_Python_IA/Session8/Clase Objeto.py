@@ -38,6 +38,10 @@ def seccion_1_intro_clases_y_objetos():
         """
 
         # Método para inicializar los atributos del objeto
+        def __init__(self):
+            self.apellido = None
+            self.nombre = None
+
         def inicializar_persona(self, nombre, apellido):
             """Inicializa los atributos de la persona."""
             # Creamos los atributos de la clase

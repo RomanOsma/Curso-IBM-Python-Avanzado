@@ -4,6 +4,7 @@
 # Temas: Clases, Objetos, Constructores, Encapsulamiento, Herencia, Polimorfismo, Métodos y Atributos de Clase
 # ============================================================
 
+
 # -------------------------------
 # 1. DEFINICIÓN DE UNA CLASE Y CREACIÓN DE OBJETOS
 # -------------------------------
@@ -19,7 +20,7 @@ class Persona:
         print(f"Persona: Nombre: {self.nombre} Apellido: {self.apellido}")
 
 # Ejemplo de creación de objetos
-if __name__ == '__main__':
+if __name__ == '__main__': #Crea un objeto de la clase Persona vacio
     persona1 = Persona('Layla', 'Acosta')
     persona1.mostrar_contacto()
     print()
