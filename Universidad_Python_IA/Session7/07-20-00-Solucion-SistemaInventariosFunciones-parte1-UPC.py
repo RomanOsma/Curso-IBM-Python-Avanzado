@@ -17,12 +17,12 @@ def mostrar_inventario():
 
 # Funcion para agregar un nuevo producto
 def agregar_producto():
-    # pass  # Pasa por esta funcion, sin ejecutar nada mas
+    pass  # Pasa por esta funcion, sin ejecutar nada mas
 
 
 # Funcion para buscar por id
 def buscar_producto_por_id():
-pass
+    pass
     
 
 # Programa principal

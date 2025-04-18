@@ -31,7 +31,8 @@ def agregar_producto():
 
 # Funcion para buscar por id
 def buscar_producto_por_id():
-    
+    pass
+
 
 # Programa principal
 if __name__ == '__main__':

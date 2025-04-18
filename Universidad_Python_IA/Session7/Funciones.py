@@ -146,6 +146,16 @@ print("\n" + "=" * 80)
 print("5. RETORNO DE MÚLTIPLES VALORES (TUPLAS)")
 print("=" * 80)
 
+print('*** Regresar una tupla de valores desde una función ***')
+
+# Definicion de la funcion
+def persona_mayusculas(nombre, apellido, edad):
+    print('Esta función regresa varios valores (tupla)')
+    return nombre.upper(), apellido.upper(), edad
+
+# Programa principal
+nombre, apellido, edad = persona_mayusculas('Sandra', 'Jimenez', 42)
+print(f'Resultado Persona: nombre = {nombre}, apellido = {apellido}, edad = {edad}')
 
 def obtener_coordenadas():
     """
@@ -177,7 +187,22 @@ print(f'Todas las coordenadas: {coordenadas}')
 print("\n" + "=" * 80)
 print("6. ARGUMENTOS VARIABLES (*ARGS Y **KWARGS)")
 print("=" * 80)
+print('*** Argumentos Variables ***')
 
+
+def superheroe_superpoderes(superheroe, nombre,  *args):
+    print(f'Superheroe: {superheroe} - {nombre} - {args}')
+    # Iteramos los superpoderes
+    for superpoder in args:
+        print(f'\tSuperpoder: {superpoder}')
+
+
+# Llamar a la funcion
+superheroe_superpoderes('Spiderman', 'Peter Parker', 'Instinto Arácnido', 'Telaraña')
+superheroe_superpoderes('Ironman', 'Tony Stark', 'Armadura', 'Playboy', 'Millonario')
+
+# Es opcional enviar argumentos variables
+superheroe_superpoderes('Mi vecino', 'Juan Perez')
 
 def sumar_numeros(*args):
     """
@@ -213,7 +238,7 @@ def imprimir_info(**kwargs):
         **kwargs: Diccionario de argumentos con nombre
 
     Ejemplo:
-    >>> imprimir_info(nombre="Ana", edad=25, ciudad="Madrid")
+    imprimir_info(nombre="Ana", edad=25, ciudad="Madrid")
     nombre: Ana
     edad: 25
     ciudad: Madrid
@@ -224,7 +249,21 @@ def imprimir_info(**kwargs):
 
 
 imprimir_info(nombre='Karla', edad=30, ciudad='México')
-imprimir_info(nombre='Carlos', puesto='Gerente', salario=45000)
+imprimir_info(nombre='Carlos', edad=35, ciudad='México', puesto='Gerente', salario=45000)
+
+print('*** Funcion par ***')
+
+# Funcion para saber si un numero es par o no
+def es_par(numero):
+    if numero % 2 == 0:
+        return True
+    else:
+        return False
+
+
+numero = int(input('Proporciona un valor numérico: '))
+print(f'Número par? {es_par(numero)}')
+
 
 # =============================================================================
 # 7. FUNCIONES RECURSIVAS
@@ -257,9 +296,47 @@ def factorial(n):
     else:
         return n * factorial(n - 1)
 
+def factorial_recursivo2(numero):
+    # Caso base: fatorial de 0 o 1 es 1
+    if numero == 0 or numero == 1:
+        print(f'Resultado factorial parcial {numero} es: 1')
+        return 1
+    # Caso recursivo, calcular factorial del numero reducido en 1
+    else:
+        factorial_parcial = numero * factorial_recursivo2(numero - 1)
+        print(f'Resultado factorial parcial {numero} es: {factorial_parcial}')
+        return factorial_parcial
+
+
 
 numero = 5
 print(f'El factorial de {numero} es {factorial(numero)}')
+# Solicitar al usuario el numero del cual desea calcular el factorial
+numero = int(input('Proporciona el número para calcular su factorial: '))
+# Verificamos si el numero es negativo
+if numero < 0:
+    print('El favtorial no está definido para números negativos')
+else:
+    # Llamamos a la función factorial_recursivo para calcular el factorial
+    resultado = factorial_recursivo2(numero)
+    print(f'El factorial de {numero} es: {resultado}')
+
+print(f'El factorial de {numero} es {factorial_recursivo2(numero)}')
+
+
+print('*** Imprimir del 1 al 5 de forma recursiva ***')
+
+
+# Definir la funcion recursiva
+def funcion_recursiva(numero):
+    # Caso Base
+    if numero == 1:
+        print(numero, end=' ')
+    else:  # Caso recursivo
+        funcion_recursiva(numero - 1)
+        print(numero, end=' ')
+
+funcion_recursiva(5)
 
 # =============================================================================
 # 8. EJERCICIOS PRÁCTICOS
@@ -349,7 +426,7 @@ def menu_inventario():
 
 
 # Para ejecutar el sistema de inventario, descomentar la siguiente línea:
-# menu_inventario()
+menu_inventario()
 
 # -----------------------------------------------------------------------------
 # 8.2 Máquina de Snacks
@@ -430,7 +507,7 @@ def menu_snacks():
 
 
 # Para ejecutar la máquina de snacks, descomentar la siguiente línea:
-# menu_snacks()
+menu_snacks()
 
 # -----------------------------------------------------------------------------
 # 8.3 Calculadora
@@ -481,7 +558,7 @@ def calculadora():
 
 
 # Para ejecutar la calculadora, descomentar la siguiente línea:
-# calculadora()
+calculadora()
 
 # =============================================================================
 # 9. MÓDULOS Y FUNCIONES

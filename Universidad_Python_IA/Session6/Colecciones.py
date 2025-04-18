@@ -212,7 +212,7 @@ print(agenda)
 
 # Acceder a información de un contacto específico usando claves.
 print(f'Información de contacto de María: Teléfono: {agenda["María"]["telefono"]}, Email: {agenda["María"]["email"]}, Dirección: {agenda["María"]["direccion"]}')
-
+print(f"Información de contacto de María: email: {agenda["María"].get("email")}")
 # Agregar un nuevo contacto a la agenda.
 agenda['Ana'] = { 'telefono': '55678392', 'email': 'ana@mail.com', 'direccion': 'Calle Salvador Diaz 321' }
 print(f'Diccionario de agenda después de agregar a Ana: {agenda}')
