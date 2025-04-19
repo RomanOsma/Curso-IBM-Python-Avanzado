@@ -395,9 +395,10 @@ def seccion_4_encapsulamiento():
         def conducir(self):
             """Muestra información sobre el coche que se está conduciendo."""
             print(f'''Conduciendo el coche: 
-Marca: {self.marca} 
-Modelo: {self._modelo} 
-Color: {self.__color}''')
+            Marca: {self.marca} 
+            Modelo: {self._modelo} 
+            Color: {self.__color}'''
+                )
 
     # Ejemplo de modificadores de acceso
     print("\nEjemplo - Modificadores de acceso:")
@@ -416,8 +417,10 @@ Color: {self.__color}''')
     # Atributo privado - no se puede acceder directamente
     print("Intentando modificar atributo privado: coche1.__color = 'Azul 2'")
     try:
+        print(f"Nota: {coche1.__dict__}")
         coche1.__color = 'Azul 2'  # Esto no modifica el atributo original
         print("Nota: Esto crea un nuevo atributo pero no cambia el privado")
+        print(f"Nota: {coche1.__dict__}")
     except Exception as e:
         print(f"Error: {e}")
 
@@ -444,9 +447,9 @@ Color: {self.__color}''')
         def conducir(self):
             """Muestra información sobre el coche que se está conduciendo."""
             print(f'''Conduciendo el coche: 
-Marca: {self._marca} 
-Modelo: {self._modelo} 
-Color: {self._color}''')
+            Marca: {self._marca} 
+            Modelo: {self._modelo} 
+            Color: {self._color}''')
 
         # Métodos getter y setter para marca
         def get_marca(self):
@@ -490,7 +493,6 @@ Color: {self._color}''')
     coche1.set_marca("Toyota 2")
     coche1.set_modelo("Yaris 2")
     coche1.set_color("Azul 2")
-
     print("\nDespués de cambios:")
     coche1.conducir()
 
