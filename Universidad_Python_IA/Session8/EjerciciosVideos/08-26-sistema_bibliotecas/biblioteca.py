@@ -17,12 +17,14 @@ class Biblioteca:
             if libro.genero.lower() == genero.lower():
                 self.mostrar_libro(libro)
 
+
     def mostrar_todos_los_libros(self):
         print(f'\nTodos los libros de la biblioteca {self.nombre}:')
         for libro in self.libros:
             self.mostrar_libro(libro)
 
-    def mostrar_libro(self, libro):
+    @staticmethod
+    def mostrar_libro(libro):
         print(f'Libro -> Titulo: {libro.titulo}, Autor: {libro.autor}, '
               f'Género: {libro.genero} ')
 

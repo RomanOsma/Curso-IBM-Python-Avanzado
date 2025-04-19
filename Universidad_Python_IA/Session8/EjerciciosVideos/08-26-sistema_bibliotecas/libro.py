@@ -1,5 +1,10 @@
 class Libro:
+
+    contador_libros=0
+
     def __init__(self, titulo, autor, genero):
+        Libro.contador_libros += 1
+        self.id = Libro.contador_libros
         self._titulo = titulo
         self._autor = autor
         self._genero = genero
@@ -15,6 +20,10 @@ class Libro:
     @property
     def genero(self):
         return self._genero
+
+    @classmethod
+    def obtener_total_libros(cls):
+        return cls.contador_libros
 
 
 if __name__ == '__main__':
